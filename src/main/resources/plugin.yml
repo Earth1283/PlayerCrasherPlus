@@ -1,0 +1,9 @@
+name: PlayerCrasherPlus
+version: '${version}'
+
+main: io.github.earth1283.playerCrasherPlus.PlayerCrasherPlus
+api-version: '1.21'
+load: STARTUP
+
+authors: [ Earth1283 ]
+description: Teaching a lesson to that one player that won't stop bothering you.
