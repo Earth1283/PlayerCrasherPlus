@@ -11,6 +11,7 @@ repositories {
 
 dependencies {
     compileOnly("io.papermc.paper:paper-api:1.21-R0.1-SNAPSHOT")
+    compileOnly("io.netty:netty-all:4.1.97.Final")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 }
 

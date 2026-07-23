@@ -1,0 +1,47 @@
+# PlayerCrasherPlus config
+# tune the weapon to taste
+
+# how many megabytes of pure malice get sent when you don't specify a size
+default-size-mb: 5.0
+
+# the lie we tell the client's face. it will only ever see this number,
+# never the real payload behind it. keep it small and boring on purpose,
+# a couple KB reads as "normal packet, nothing to see here"
+fake-header:
+  min-bytes: 2048
+  max-bytes: 4096
+
+# how many bytes get shoveled at once while building the payload.
+# keeps the server from choking on one giant allocation, we're crashing
+# their client, not ours
+fill-chunk-bytes: 8192
+
+fallback:
+  # the BOFH backup plan. ticks (20 = 1 second) before we check if they
+  # actually went down. if they're still standing, kicked the boring way instead
+  delay-ticks: 20
+  # what the target sees if the fallback kick has to step in
+  kick-message: "&cDisconnected."
+
+ghost:
+  # some hardened clients just eat a disconnect packet and stay connected
+  # like nothing happened. fine. if the kick doesn't land either, we stop
+  # replying to anything they send and only keep sending keepalives.
+  # they don't get crashed, they don't get kicked, they just stop existing
+  enabled: true
+  # skip the kick entirely and go straight to ghost after the blast.
+  # for when you don't even want to give them the dignity of a disconnect
+  prefer-first: false
+  # ticks to wait after the kick before checking if it actually worked.
+  # unused if prefer-first is true, ghost engages immediately instead
+  delay-ticks: 20
+
+messages:
+  no-permission: "&cYou don't have permission to do that."
+  usage: "&cUsage: /crash <player> [sizeMB]"
+  player-not-found: "&cPlayer '%player%' not found or not online."
+  invalid-size: "&cSize must be a positive number."
+  sent: "&7Sent %size%MB of garbage to %target%."
+  result-crashed: "&a%target% crashed / disconnected. beautiful."
+  result-fallback: "&e%target% didn't budge, force-kicked as fallback. cockroach."
+  result-ghosted: "&5%target% ignored the kick too. ghosted. gone. nobody's home."

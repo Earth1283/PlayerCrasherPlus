@@ -5,10 +5,10 @@ import org.bukkit.plugin.java.JavaPlugin
 class PlayerCrasherPlus : JavaPlugin() {
 
     override fun onEnable() {
-        // Plugin startup logic
+        saveDefaultConfig()
+        getCommand("crash")?.setExecutor(CrashCommand(this))
     }
 
     override fun onDisable() {
-        // Plugin shutdown logic
     }
 }

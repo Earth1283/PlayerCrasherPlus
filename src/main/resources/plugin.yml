@@ -7,3 +7,14 @@ load: STARTUP
 
 authors: [ Earth1283 ]
 description: Teaching a lesson to that one player that won't stop bothering you.
+
+commands:
+  crash:
+    description: Sends an oversized packet at a player's client.
+    usage: /<command> <player> [sizeMB]
+    permission: playercrasherplus.crash
+
+permissions:
+  playercrasherplus.crash:
+    description: Allows use of /crash
+    default: op
